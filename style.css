@@ -7,9 +7,11 @@
 
 body {
     display: flex;
+    justify-content: center;
     flex-direction: column;
     height: 100vh;
-    padding: 5px;
+    padding: 1px;
+    background-color: #fefefe;
 }
 
 #tabelaPeriodica {
@@ -24,12 +26,11 @@ body {
     justify-content: center;
     align-items: start;
     flex-direction: column;
-    width: 65px;
-    height: 60px;
-    background-color: rgb(117, 223, 106);
+    width: 40px;
+    height: 40px;
     color: #fffafa;
     box-shadow: 0px 0px 5px rgba(45, 45, 45, 0.35);
-    padding: 3px;
+    padding: 10px;
     font-size: 11px;
     border-radius: 5px;
     cursor: pointer;
@@ -37,13 +38,5 @@ body {
 }
 
 #elemento:hover {
-    background-color: rgba(118, 223, 106, 0.815);
+    opacity: 0.6;
 }
-
-#tabelaPeriodicaInferior{
-    display: flex;
-    justify-content: end;
-    margin-top: 15px;
-    margin-right: 29px;
-}
-
