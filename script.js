@@ -65,38 +65,77 @@ function aplicarTabelaPeriodica(elementos) {
   colocarInfos();
   */
 
-  function aplicarTabelaPeriodica(elementos) {
-    const tabelaPeriodica = document.querySelector('#tabelaPeriodica');
-    let tabela = '<table>';
-  
-    for (let linha = 1; linha <= 7; linha++) {
-      tabela += '<tr>';
-  
-      for (let coluna = 1; coluna <= 18; coluna++) {
-        // Busca o elemento com a linha e coluna correspondentes
-        const elemento = elementos.find(el => el.linha == linha && el.coluna == coluna);
-  
-        tabela += '<td>';
-        if (elemento) {
-          tabela += `<div class="elemento" style="background-color: ${elemento.corGrupo};">
+function aplicarTabelaPeriodica(elementos) {
+  const tabelaPeriodica = document.querySelector('#tabelaPeriodica');
+  let tabela = '<table>';
+
+  for (let linha = 1; linha <= 10; linha++) {
+    tabela += '<tr>';
+
+    for (let coluna = 1; coluna <= 18; coluna++) {
+      // Busca o elemento com a linha e coluna correspondentes
+      const elemento = elementos.find(el => el.linha == linha && el.coluna == coluna);
+
+      tabela += '<td>';
+      if (elemento) {
+        tabela += `<div class="elemento" style="background-color: ${elemento.corGrupo};">
             <p class="num-atomico">${elemento.numeroAtomico}</p>
             <p class="simbolo"><strong>${elemento.simbolo}</strong></p>
             <p class="nome">${elemento.nome}</p>
             <p class="massa-atomica">${elemento.massaAtomica}</p>
           </div>`;
-        } else {
-          tabela += ''; // célula vazia
-        }
-        tabela += '</td>';
+      } else {
+        tabela += '';
       }
-  
-      tabela += '</tr>';
+      tabela += '</td>';
     }
-  
-    tabela += '</table>';
-    tabelaPeriodica.innerHTML = tabela;
+
+    tabela += '</tr>';
   }
+
+  tabela += '</table>';
+  tabelaPeriodica.innerHTML = tabela;
+}
+
+// Chame a função passando a array
+aplicarTabelaPeriodica(colecaoElementos);
+
+// Parte de colocar dados quando clica no elemento
+
+function aplicarEventosNosElementos(elementos) {
+  const divs = document.querySelectorAll('.elemento');
+
+  divs.forEach(div => {
+    const numAtomico = div.querySelector('.num-atomico').innerText;
+    const elemento = elementos.find(el => el.numeroAtomico == numAtomico);
+
+    div.addEventListener('click', () => {
+      preencherModal(elemento);
+    });
+  });
+}
+
+function preencherModal(elemento) {
+  // quando clica em um elemento da tabela, aparece o modal e a tabela vai para esquerda
+  const tabelaPeriodica = document.querySelector('#tabelaPeriodica');
+  tabelaPeriodica.style.justifyContent = 'left';
+  const modal = document.querySelector('#modalDados');
+  modal.style.display = 'flex';
   
-  // Chame a função passando a array
-  aplicarTabelaPeriodica(colecaoElementos);
-  
+  document.querySelector('#nome').innerHTML = `${elemento.nome}<sup id="num-atomico">${elemento.numeroAtomico}</sup>`;
+  document.querySelector('#simbolo').innerText = elemento.simbolo;
+  document.querySelector('#massa-atomica').innerText = elemento.massaAtomica;
+  document.querySelector('#ano-descoberda').innerText = elemento.anoDeDescoberta;
+  document.querySelector('#grupo').innerText = elemento.grupo;
+  document.querySelector('#estado-padrao').innerText = elemento.estadoPadrao;
+  document.querySelector('#tipo-ligacao').innerText = elemento.tipoDeLigacao;
+  document.querySelector('#afinidade-eletrica').innerText = elemento.afinidadeEletronica;
+  document.querySelector('#eletronegatividade').innerText = elemento.eletronegatividade;
+  document.querySelector('#ponto-fusao').innerText = elemento.pontoDeFusao;
+  document.querySelector('#config-eletronica').innerText = elemento.configuracaoEletronica;
+}
+
+aplicarTabelaPeriodica(colecaoElementos);
+aplicarEventosNosElementos(colecaoElementos);
+
+
