@@ -37,7 +37,7 @@ body {
     width: 26%;
     background-color: #fefefe;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
-    font-size: 25px;
+    font-size: 18px;
 }
 
 #modalDados h1 {
@@ -58,4 +58,8 @@ body {
     gap: 30px;
     overflow: auto;
     overflow-x: hidden;
+}
+
+.identifica-dados {
+    color: #111111e4;
 }
