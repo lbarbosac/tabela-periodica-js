@@ -72,8 +72,6 @@ function preencherModal(elemento) {
 aplicarTabelaPeriodica(colecaoElementos);
 aplicarEventosNosElementos(colecaoElementos);
 
-const cargaElementar = 1.6e-19; // carga elementar em coulombs
-
 // Função para calcular a carga Q = n * e e mostrar no resultado
 function calcularCarga() {
   const simbolo1 = document.querySelector('#adiciona-elemento-1').value.trim();
@@ -87,6 +85,7 @@ function calcularCarga() {
     return;
   }
 
+  /*
   const n1 = Number(elemento1.numeroAtomico);
   const n2 = Number(elemento2.numeroAtomico);
 
@@ -96,6 +95,7 @@ function calcularCarga() {
   const cargaTotal = carga1 + carga2;
 
   document.querySelector('#resultado-elemento').value = cargaTotal.toExponential(3) + ' C';
+  */
 }
 
 // Função para limpar os inputs de entrada e o resultado
@@ -106,7 +106,7 @@ function limparCampos() {
 }
 
 // Evento para calcular a carga ao clicar no botão calcular
-document.querySelector('#calcula').addEventListener('click', calcularCarga);
+// document.querySelector('#calcula').addEventListener('click', calcularCarga);
 
 // Evento para limpar os campos ao clicar no botão limpar
 document.querySelector('#limpa-elementos-resultado').addEventListener('click', limparCampos);
